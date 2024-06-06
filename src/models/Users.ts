@@ -13,11 +13,8 @@ export class Users extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column({ name: "first_name" })
-  first_name!: string
-
-  @Column({ name: "last_name" })
-  last_name!: string
+  @Column({ name: "username" })
+  username!: string
 
   @Column({ name: "password", select: false })
   password!: string

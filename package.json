@@ -8,6 +8,7 @@
     "dev": "nodemon ./src/server.ts",
     "migrations": "typeorm-ts-node-commonjs migration:run -d ./src/models/db.ts",
     "revert-migrations": "typeorm-ts-node-commonjs migration:revert -d ./src/models/db.ts",
+    "create-migration": "typeorm-ts-node-commonjs migration:create",
     "seeder": "ts-node ./src/models/seeders/seeders.ts",
     "build": "tsc",
     "start": "node ./dist/server.js",
@@ -38,3 +39,4 @@
     "typescript": "^5.3.3"
   }
 }
+

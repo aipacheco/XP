@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class Users1708952337364 implements MigrationInterface {
+export class Ad1717669093252 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "users",
+        name: "ad",
         columns: [
           {
             name: "id",
@@ -14,55 +14,56 @@ export class Users1708952337364 implements MigrationInterface {
             generationStrategy: "increment",
           },
           {
-            name: "username",
+            name: "name",
             type: "varchar",
             length: "50",
             isNullable: false,
           },
           {
-            name: "email",
+            name: "description",
             type: "varchar",
-            length: "100",
-            isNullable: false,
-            isUnique: true,
-          },
-          {
-            name: "password",
-            type: "varchar",
-            length: "255",
+            length: "50",
             isNullable: false,
           },
           {
-            name: "avatar",
+            name: "location",
+            type: "varchar",
+            length: "50",
+            isNullable: false,
+          },
+          {
+            name: "image",
             type: "varchar",
             length: "250",
-            default: "'https://res.cloudinary.com/dptbxi3iu/image/upload/v1717665018/XP/descarga_1_ozfz0e.jpg'",
           },
           {
-            name: "isActive",
-            type: "boolean",
-            default: true,
-          },
-          {
-            name: "role_id",
+            name: "game_id",
             type: "int",
-            default: 1,
+          },
+          {
+            name: "creator_id",
+            type: "int",
           },
         ],
         foreignKeys: [
           {
-            columnNames: ["role_id"],
-            referencedTableName: "roles",
+            columnNames: ["creator_id"],
+            referencedTableName: "users",
+            referencedColumnNames: ["id"],
+            onDelete: "CASCADE",
+          },
+          {
+            columnNames: ["game_id"],
+            referencedTableName: "games",
             referencedColumnNames: ["id"],
             onDelete: "CASCADE",
           },
         ],
-      }),
-      true
+      })
     )
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users")
+    await queryRunner.dropTable("ad")
   }
 }

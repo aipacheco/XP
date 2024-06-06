@@ -1,4 +1,7 @@
-# Plantilla Backend
+# XP - Red Social para jugadores
+
+## Diagrama de base de datos
+<img src="XP.png">
 
 
 ## Instalación en local
